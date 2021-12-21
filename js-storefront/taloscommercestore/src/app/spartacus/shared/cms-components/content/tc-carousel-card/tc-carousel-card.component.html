@@ -1,0 +1,9 @@
+<div class="tc-carosuel-card-itemCard" #asItemBanner>
+  <ng-container *ngIf="componentData$ | async as data">
+    <cx-media class="tc-carosuel-card-itemCard__image" *ngIf="data.media" [container]="data.media"></cx-media>
+    <div class="tc-carosuel-card-itemCard__title">
+      <h3>{{data.title}}</h3>
+      <p>{{data.description}}</p>
+    </div>
+  </ng-container>
+</div>

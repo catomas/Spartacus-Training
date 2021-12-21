@@ -1,0 +1,24 @@
+$contentCatalog = taloscommerceContentCatalog
+$contentCV = catalogVersion(CatalogVersion.catalog(Catalog.id[default=$contentCatalog]), CatalogVersion.version[default=Staged])[default=$contentCatalog:Staged]
+$lang = en
+
+
+INSERT_UPDATE CMSNavigationNode; uid[unique = true]; $contentCV[unique = true]; name               ; parent(uid, $contentCV); links(&linkRef); &nodeRef
+                               ; exercise1NavNode  ;                          ; Exercise1 Nav Node ; MyAccountNavNode       ;                ; exercise1NavNode
+                               ; exercise2NavNode  ;                          ; Exercise2 Nav Node ; MyAccountNavNode       ;                ; exercise2NavNode
+                               ; exercise3NavNode  ;                          ; Exercise3 Nav Node ; MyAccountNavNode       ;                ; exercise3NavNode
+
+INSERT_UPDATE CMSNavigationEntry; uid[unique = true] ; $contentCV[unique = true]; name                 ; navigationNode(&nodeRef); item(&linkRef);
+                                ; exercise1NodeEntry ;                          ; Exercise1 Node Entry ; exercise1NavNode        ; exercise1Link ;
+                                ; exercise2NodeEntry ;                          ; Exercise2 Node Entry ; exercise2NavNode        ; exercise2Link ;
+                                ; exercise3NodeEntry ;                          ; Exercise3 Node Entry ; exercise3NavNode        ; exercise3Link ;
+
+
+INSERT_UPDATE CMSLinkComponent; $contentCV[unique = true]; uid[unique = true]; name           ; url        ; styleAttributes; &linkRef      ; target(code)[default = 'sameWindow']; linkName[$lang];
+                              ;                          ; exercise1Link     ; Exercise1 Link ; /exercise1 ;                ; exercise1Link ;                                     ; Exercise 1 Grid
+                              ;                          ; exercise2Link     ; Exercise2 Link ; /exercise2 ;                ; exercise2Link ;                                     ; Exercise 2 Carousel
+                              ;                          ; exercise3Link     ; Exercise3 Link ; /exercise3 ;                ; exercise3Link ;                                     ; Exercise 3 Form Email
+
+
+
+

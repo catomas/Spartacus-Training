@@ -1,0 +1,53 @@
+<form [formGroup]="formEmail" class="tc-form-email-content">
+  <div class="row">
+    <div class="col-12 ">
+      <div class="form-group">
+        <label>
+          <span class="label-content required">{{
+            'tcFormEmail.mailTo.label' | cxTranslate
+            }}</span>
+          <input type="email" class="form-control"
+            placeholder="{{ 'tcFormEmail.mailTo.placeholder' | cxTranslate }}" formControlName="mailTo" />
+          <cx-form-errors [control]="formEmail.get('mailTo')"></cx-form-errors>
+        </label>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 ">
+      <div class="form-group">
+        <label>
+          <span class="label-content required">{{
+            'tcFormEmail.subject.label' | cxTranslate
+            }}</span>
+          <input type="text" class="form-control"
+            placeholder="{{ 'tcFormEmail.subject.placeholder' | cxTranslate }}"
+            formControlName="mailSubject" />
+          <cx-form-errors [control]="formEmail.get('mailSubject')"></cx-form-errors>
+        </label>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 ">
+      <div class="form-group">
+        <label>
+          <span class="label-content required">{{
+            'tcFormEmail.message.label' | cxTranslate
+            }}</span>
+          <input type="text" class="form-control"
+            placeholder="{{ 'tcFormEmail.message.placeholder' | cxTranslate }}"
+            formControlName="message" />
+          <cx-form-errors [control]="formEmail.get('message')"></cx-form-errors>
+        </label>
+      </div>
+    </div>
+  </div>
+  <div class="row mt-2">
+    <div class="col-12">
+      <button class="btn btn-block btn-primary" type="submit">
+        {{'tcFormEmail.send' | cxTranslate}}
+      </button>
+    </div>
+  </div>
+</form>

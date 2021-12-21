@@ -1,0 +1,17 @@
+{
+  "tcFormEmail": {
+    "mailTo": {
+      "label": "Mail To",
+      "placeholder": "Enter Email"
+    },
+    "subject": {
+      "label": "Subject",
+      "placeholder": "Enter Subject"
+    },
+    "message": {
+      "label": "Message",
+      "placeholder":"Enter Message"
+    },
+    "send": "Send"
+  }
+}

@@ -1,0 +1,9 @@
+<div class="tc-carosuel-banner-itemBanner" #asItemBanner>
+  <ng-container *ngIf="componentData$ | async as data">
+    <div class="tc-carosuel-banner-itemBanner__title">
+      <h3>{{data.title}}</h3>
+      <p>{{data.description}}</p>
+    </div>
+  </ng-container>
+</div>
+

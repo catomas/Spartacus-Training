@@ -1,0 +1,100 @@
+$contentCatalog = taloscommerceContentCatalog
+$contentCV = catalogVersion(CatalogVersion.catalog(Catalog.id[default=$contentCatalog]), CatalogVersion.version[default=Staged])[default=$contentCatalog:Staged]
+$picture = media(code, $contentCV)
+
+
+INSERT_UPDATE PageTemplate; $contentCV[unique = true]; uid[unique = true]    ; frontendTemplateName    ; restrictedPageTypes(code); active[default = true]
+                          ;                          ; exercise2PageTemplate ; exercises/exercise2Page ; ContentPage
+
+INSERT_UPDATE ContentPage; $contentCV[unique = true]; uid[unique = true]   ; masterTemplate(uid, $contentCV); label; defaultPage[default = 'true']; approvalStatus(code)[default = 'approved']; homepage[default = 'false']
+                         ;                          ; exercise2ContentPage ; exercise2PageTemplate          ; exercise2
+
+INSERT_UPDATE ContentSlotName; name[unique = true]    ; template(uid, $contentCV)[unique = true][default = 'exercise2PageTemplate']; validComponentTypes(code); compTypeGroup(code)
+                             ; SiteLogo               ;                                                                            ;                          ; logo
+                             ; SiteContext            ;                                                                            ; CMSSiteContextComponent  ;
+                             ; SiteLinks              ;                                                                            ; CMSLinkComponent         ;
+                             ; HeaderLinks            ;                                                                            ;                          ; headerlinks
+                             ; SearchBox              ;                                                                            ;                          ; searchbox
+                             ; MiniCart               ;                                                                            ;                          ; minicart
+                             ; NavigationBar          ;                                                                            ;                          ; navigation
+                             ; TopContent             ;                                                                            ;                          ; wide
+                             ; SideContent            ;                                                                            ;                          ; narrow
+                             ; BodyContent            ;                                                                            ;                          ; wide
+                             ; BottomContent          ;                                                                            ;                          ; wide
+                             ; Footer                 ;                                                                            ;                          ; footer
+                             ; TopHeaderSlot          ;                                                                            ;                          ; wide
+                             ; BottomHeaderSlot       ;                                                                            ;                          ; wide
+                             ; PlaceholderContentSlot ;                                                                            ;                          ;
+                             ; BannerCarouselSlot     ;                                                                            ;                          ; wide
+
+INSERT_UPDATE Media; $contentCV[unique = true]; code[unique = true]       ; @media[translator = de.hybris.platform.impex.jalo.media.MediaDataTranslator]; mime[default = 'image/jpeg']
+                   ;                          ; afterlife-blue.jpeg       ; file:/Users/juancamiloecheverry/Documents/images/afterlife/afterlife-1.jpeg ;
+                   ;                          ; afterlife-orange.jpeg     ; file:/Users/juancamiloecheverry/Documents/images/afterlife/afterlife-2.jpeg ;
+                   ;                          ; afterlife-green.jpeg      ; file:/Users/juancamiloecheverry/Documents/images/afterlife/afterlife-3.jpeg ;
+                   ;                          ; afterlife-yellow.jpeg     ; file:/Users/juancamiloecheverry/Documents/images/afterlife/afterlife-4.jpeg ;
+                   ;                          ; afterlife-red.jpeg        ; file:/Users/juancamiloecheverry/Documents/images/afterlife/afterlife-5.jpeg ;
+                   ;                          ; afterlife-aquamarine.jpeg ; file:/Users/juancamiloecheverry/Documents/images/afterlife/afterlife-6.jpeg ;
+                   ;                          ; keyboard.jpeg             ; file:/Users/juancamiloecheverry/Documents/Front-end fundamentals/startCSS/exercises/02-exercise/images/grid-1.jpeg
+                   ;                          ; netflix.jpeg              ; file:/Users/juancamiloecheverry/Documents/Front-end fundamentals/startCSS/exercises/02-exercise/images/grid-2.jpeg
+                   ;                          ; smartphone.jpeg           ; file:/Users/juancamiloecheverry/Documents/Front-end fundamentals/startCSS/exercises/02-exercise/images/grid-3.jpeg
+                   ;                          ; desk.jpeg                 ; file:/Users/juancamiloecheverry/Documents/Front-end fundamentals/startCSS/exercises/02-exercise/images/grid-4.jpeg
+                   ;                          ; tablet.jpeg               ; file:/Users/juancamiloecheverry/Documents/Front-end fundamentals/startCSS/exercises/02-exercise/images/grid-5.jpeg
+                   ;                          ; ideas.jpeg                ; file:/Users/juancamiloecheverry/Documents/Front-end fundamentals/startCSS/exercises/02-exercise/images/grid-6.jpeg
+
+
+INSERT_UPDATE TrainingBannerCarousel; $contentCV[unique = true]; uid[unique = true]           ; name                             ; &componentRef                ; title                 ; description      ; $picture                  ;
+                                    ;                          ; exercise2AfterlifeBlue       ; Exercise 2 After Life Blue       ; exercise2AfterlifeBlue       ; After Life Blue       ; Color Blue       ; afterlife-blue.jpeg       ;
+                                    ;                          ; exercise2AfterlifeOrange     ; Exercise 2 After Life Orange     ; exercise2AfterlifeOrange     ; After Life Orange     ; Color Orange     ; afterlife-orange.jpeg     ;
+                                    ;                          ; exercise2AfterlifeGreen      ; Exercise 2 After Life Green      ; exercise2AfterlifeGreen      ; After Life Green      ; Color Green      ; afterlife-green.jpeg      ;
+                                    ;                          ; exercise2AfterlifeYellow     ; Exercise 2 After Life Yellow     ; exercise2AfterlifeYellow     ; After Life Yellow     ; Color Yellow     ; afterlife-yellow.jpeg     ;
+                                    ;                          ; exercise2AfterlifeRed        ; Exercise 2 After Life Red        ; exercise2AfterlifeRed        ; After Life Red        ; Color Red        ; afterlife-red.jpeg        ;
+                                    ;                          ; exercise2AfterlifeAquamarine ; Exercise 2 After Life Aquamarine ; exercise2AfterlifeAquamarine ; After Life Aquamarine ; Color Aquamarine ; afterlife-aquamarine.jpeg ;
+
+INSERT_UPDATE TrainingBannerCarouselContainer; $contentCV[unique = true]; uid[unique = true]               ; bannerCarousel(&componentRef)                                                                                                                            ; name                                 ; title         ; description;
+                                             ;                          ; exercise2BannerCarouselContainer ; exercise2AfterlifeBlue, exercise2AfterlifeOrange, exercise2AfterlifeGreen, exercise2AfterlifeYellow, exercise2AfterlifeRed, exercise2AfterlifeAquamarine ; Exercise 2 Banner Carousel Container ; Carousel Wide ; Big Image
+
+INSERT_UPDATE TrainingCardCarousel; $contentCV[unique = true]; uid[unique = true]           ; &componentRef                ; title      ; description                   ; $picture        ;
+                                  ;                          ; exercise2KeyboardComponent   ; exercise2KeyboardComponent   ; Keyboard   ; Tool we use all day           ; keyboard.jpeg   ;
+                                  ;                          ; exercise2NetflixComponent    ; exercise2NetflixComponent    ; Netflix    ; App we love                   ; netflix.jpeg    ;
+                                  ;                          ; exercise2SmartphoneComponent ; exercise2SmartphoneComponent ; Smartphone ; Something useful              ; smartphone.jpeg ;
+                                  ;                          ; exercise2DeskComponent       ; exercise2DeskComponent       ; Desk       ; should be clean and organized ; desk.jpeg       ;
+                                  ;                          ; exercise2TabletComponent     ; exercise2TabletComponent     ; Tablet     ; Great gadged                  ; tablet.jpeg     ;
+                                  ;                          ; exercise2IdeasComponent      ; exercise2IdeasComponent      ; Ideas      ; Be productive                 ; ideas.jpeg      ;
+
+
+INSERT_UPDATE TrainingCardCarouselContainer; $contentCV[unique = true]; uid[unique = true]             ; cardCarousel(&componentRef)                                                                                                                                    ; title          ; description
+                                           ;                          ; exercise2CardCarouselContainer ; exercise2KeyboardComponent, exercise2NetflixComponent, exercise2SmartphoneComponent, exercise2DeskComponent, exercise2TabletComponent, exercise2IdeasComponent ; Carousel Multi ; smaller images
+
+
+
+INSERT_UPDATE ContentSlot; $contentCV[unique = true]; uid[unique = true]          ; active; cmsComponents(uid, $contentCV)
+                         ;                          ; exercise2BannerCarouselSlot ; true  ; exercise2BannerCarouselContainer
+                         ;                          ; exercise2CardCarouselSlot   ; true  ; exercise2CardCarouselContainer
+
+
+INSERT_UPDATE ContentSlotForTemplate; $contentCV[unique = true]; uid[unique = true]                   ; position[unique = true]; pageTemplate(uid, $contentCV)[unique = true][default = 'exercise2PageTemplate']; contentSlot(uid, $contentCV)[unique = true]; allowOverwrite
+                                    ;                          ; SiteLogo-Exercise2Page               ; SiteLogo               ;                                                                                ; SiteLogoSlot                               ; true
+                                    ;                          ; SiteContextSlot-Exercise2Page        ; SiteContext            ;                                                                                ; SiteContextSlot                            ; true
+                                    ;                          ; SiteLinksSlot-Exercise2Page          ; SiteLinks              ;                                                                                ; SiteLinksSlot                              ; true
+                                    ;                          ; HomepageLink-Exercise2Page           ; HomepageNavLink        ;                                                                                ; HomepageNavLinkSlot                        ; true
+                                    ;                          ; NavigationBar-Exercise2Page          ; NavigationBar          ;                                                                                ; NavigationBarSlot                          ; true
+                                    ;                          ; MiniCart-Exercise2Page               ; MiniCart               ;                                                                                ; MiniCartSlot                               ; true
+                                    ;                          ; Footer-Exercise2Page                 ; Footer                 ;                                                                                ; FooterSlot                                 ; true
+                                    ;                          ; HeaderLinks-Exercise2Page            ; HeaderLinks            ;                                                                                ; HeaderLinksSlot                            ; true
+                                    ;                          ; SearchBox-Exercise2Page              ; SearchBox              ;                                                                                ; SearchBoxSlot                              ; true
+                                    ;                          ; TopHeaderSlot-Exercise2Page          ; TopHeaderSlot          ;                                                                                ; TopHeaderSlot                              ; true
+                                    ;                          ; BottomHeaderSlot-Exercise2Page       ; BottomHeaderSlot       ;                                                                                ; BottomHeaderSlot                           ; true
+                                    ;                          ; PlaceholderContentSlot-Exercise2Page ; PlaceholderContentSlot ;                                                                                ; PlaceholderContentSlot                     ; true
+                                    ;                          ; BannerCarouselSlot-Exercise2Page     ; BannerCarouselSlot     ;                                                                                ; exercise2BannerCarouselSlot                ; true
+                                    ;                          ; CardCarouselSlot-Exercise2Page       ; CardCarouselSlot       ;                                                                                ; exercise2CardCarouselSlot                  ; true
+
+
+
+
+
+
+
+
+
+
+

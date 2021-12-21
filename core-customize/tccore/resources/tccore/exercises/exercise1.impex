@@ -1,0 +1,81 @@
+$contentCatalog = taloscommerceContentCatalog
+$contentCV = catalogVersion(CatalogVersion.catalog(Catalog.id[default=$contentCatalog]), CatalogVersion.version[default=Staged])[default=$contentCatalog:Staged]
+$picture = image(code, $contentCV)
+
+
+INSERT_UPDATE PageTemplate; $contentCV[unique = true]; uid[unique = true]    ; frontendTemplateName    ; restrictedPageTypes(code); active[default = true]
+                          ;                          ; exercise1PageTemplate ; exercises/exercise1Page ; ContentPage
+
+INSERT_UPDATE ContentPage; $contentCV[unique = true]; uid[unique = true]   ; masterTemplate(uid, $contentCV); label; defaultPage[default = 'true']; approvalStatus(code)[default = 'approved']; homepage[default = 'false']
+                         ;                          ; exercise1ContentPage ; exercise1PageTemplate          ; exercise1
+
+INSERT_UPDATE ContentSlotName; name[unique = true]    ; template(uid, $contentCV)[unique = true][default = 'exercise1PageTemplate']; validComponentTypes(code); compTypeGroup(code)
+                             ; SiteLogo               ;                                                                            ;                          ; logo
+                             ; SiteContext            ;                                                                            ; CMSSiteContextComponent  ;
+                             ; SiteLinks              ;                                                                            ; CMSLinkComponent         ;
+                             ; HeaderLinks            ;                                                                            ;                          ; headerlinks
+                             ; SearchBox              ;                                                                            ;                          ; searchbox
+                             ; MiniCart               ;                                                                            ;                          ; minicart
+                             ; NavigationBar          ;                                                                            ;                          ; navigation
+                             ; TopContent             ;                                                                            ;                          ; wide
+                             ; SideContent            ;                                                                            ;                          ; narrow
+                             ; BodyContent            ;                                                                            ;                          ; wide
+                             ; BottomContent          ;                                                                            ;                          ; wide
+                             ; Footer                 ;                                                                            ;                          ; footer
+                             ; TopHeaderSlot          ;                                                                            ;                          ; wide
+                             ; BottomHeaderSlot       ;                                                                            ;                          ; wide
+                             ; PlaceholderContentSlot ;                                                                            ;                          ;
+                             ; GridSlot               ;                                                                            ;                          ; footer
+
+
+
+INSERT_UPDATE GridSimpleComponent; $contentCV[unique = true]; uid[unique = true]           ; &componentRef                ; title      ; description                   ; $picture        ; position;
+                                 ;                          ; exercise1KeyboardComponent   ; exercise1KeyboardComponent   ; Keyboard   ; Tool we use all day           ; keyboard.jpeg   ; 1
+                                 ;                          ; exercise1NetflixComponent    ; exercise1NetflixComponent    ; Netflix    ; App we love                   ; netflix.jpeg    ; 2
+                                 ;                          ; exercise1SmartphoneComponent ; exercise1SmartphoneComponent ; Smartphone ; Something useful              ; smartphone.jpeg ; 3
+                                 ;                          ; exercise1DeskComponent       ; exercise1DeskComponent       ; Desk       ; should be clean and organized ; desk.jpeg       ; 4
+                                 ;                          ; exercise1TabletComponent     ; exercise1TabletComponent     ; Tablet     ; Great gadged                  ; tablet.jpeg     ; 5
+                                 ;                          ; exercise1IdeasComponent      ; exercise1IdeasComponent      ; Ideas      ; Be productive                 ; ideas.jpeg      ; 6
+
+INSERT_UPDATE TrainingGridBannerComponent; $contentCV[unique = true]; uid[unique = true]           ; gridComponent(&componentRef)                                                                                                                                   ; columns;
+                                         ;                          ; exercise1GridBannerComponent ; exercise1KeyboardComponent, exercise1NetflixComponent, exercise1SmartphoneComponent, exercise1DeskComponent, exercise1TabletComponent, exercise1IdeasComponent ; 4      ;
+
+
+INSERT_UPDATE Media; $contentCV[unique = true]; code[unique = true]; @media[translator = de.hybris.platform.impex.jalo.media.MediaDataTranslator]; mime[default = 'image/jpeg']
+                   ;                          ; keyboard.jpeg      ; file:/Users/juancamiloecheverry/Documents/Front-end fundamentals/startCSS/exercises/02-exercise/images/grid-1.jpeg
+                   ;                          ; netflix.jpeg       ; file:/Users/juancamiloecheverry/Documents/Front-end fundamentals/startCSS/exercises/02-exercise/images/grid-2.jpeg
+                   ;                          ; smartphone.jpeg    ; file:/Users/juancamiloecheverry/Documents/Front-end fundamentals/startCSS/exercises/02-exercise/images/grid-3.jpeg
+                   ;                          ; desk.jpeg          ; file:/Users/juancamiloecheverry/Documents/Front-end fundamentals/startCSS/exercises/02-exercise/images/grid-4.jpeg
+                   ;                          ; tablet.jpeg        ; file:/Users/juancamiloecheverry/Documents/Front-end fundamentals/startCSS/exercises/02-exercise/images/grid-5.jpeg
+                   ;                          ; ideas.jpeg         ; file:/Users/juancamiloecheverry/Documents/Front-end fundamentals/startCSS/exercises/02-exercise/images/grid-6.jpeg
+
+
+
+INSERT_UPDATE ContentSlot; $contentCV[unique = true]; uid[unique = true]; active; cmsComponents(uid, $contentCV)
+                         ;                          ; exercise1GridSlot ; true  ; exercise1GridBannerComponent
+
+
+INSERT_UPDATE ContentSlotForTemplate; $contentCV[unique = true]; uid[unique = true]                   ; position[unique = true]; pageTemplate(uid, $contentCV)[unique = true][default = 'exercise1PageTemplate']; contentSlot(uid, $contentCV)[unique = true]; allowOverwrite
+                                    ;                          ; SiteLogo-Exercise1Page               ; SiteLogo               ;                                                                                ; SiteLogoSlot                               ; true
+                                    ;                          ; SiteContextSlot-Exercise1Page        ; SiteContext            ;                                                                                ; SiteContextSlot                            ; true
+                                    ;                          ; SiteLinksSlot-Exercise1Page          ; SiteLinks              ;                                                                                ; SiteLinksSlot                              ; true
+                                    ;                          ; HomepageLink-Exercise1Page           ; HomepageNavLink        ;                                                                                ; HomepageNavLinkSlot                        ; true
+                                    ;                          ; NavigationBar-Exercise1Page          ; NavigationBar          ;                                                                                ; NavigationBarSlot                          ; true
+                                    ;                          ; MiniCart-Exercise1Page               ; MiniCart               ;                                                                                ; MiniCartSlot                               ; true
+                                    ;                          ; Footer-Exercise1Page                 ; Footer                 ;                                                                                ; FooterSlot                                 ; true
+                                    ;                          ; HeaderLinks-Exercise1Page            ; HeaderLinks            ;                                                                                ; HeaderLinksSlot                            ; true
+                                    ;                          ; SearchBox-Exercise1Page              ; SearchBox              ;                                                                                ; SearchBoxSlot                              ; true
+                                    ;                          ; TopHeaderSlot-Exercise1Page          ; TopHeaderSlot          ;                                                                                ; TopHeaderSlot                              ; true
+                                    ;                          ; BottomHeaderSlot-Exercise1Page       ; BottomHeaderSlot       ;                                                                                ; BottomHeaderSlot                           ; true
+                                    ;                          ; PlaceholderContentSlot-Exercise1Page ; PlaceholderContentSlot ;                                                                                ; PlaceholderContentSlot                     ; true
+                                    ;                          ; GridSlot-Exercise1Page               ; GridSlot               ;                                                                                ; exercise1GridSlot                          ; true
+
+
+
+
+
+
+
+
+
+

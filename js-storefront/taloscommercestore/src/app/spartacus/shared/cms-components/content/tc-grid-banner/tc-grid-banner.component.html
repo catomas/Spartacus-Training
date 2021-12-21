@@ -1,0 +1,17 @@
+<div class="tc-grid-banner-section-title">
+  <h1>{{ 'gridBanner.title' | cxTranslate}}</h1>
+  <p>{{ 'gridBanner.description' | cxTranslate}}</p>
+</div>
+
+<ng-container *ngIf="bannerComponentData$ | async as bannerData">
+  <div class="tc-grid-banner-items-container" #asGridBannerItems>
+    <ng-container *ngIf="components$ | async as components">
+      <ng-container *ngFor="let component of components"
+        [cxComponentWrapper]="{flexType: component.typeCode, uid: component?.uid}">
+      </ng-container>
+    </ng-container>
+  </div>
+  <div class="tc-grid-banner-section-title">
+    <h1>{{ 'gridBanner.numberColumns' | cxTranslate}} {{bannerData.columns}}</h1>
+  </div>
+</ng-container>

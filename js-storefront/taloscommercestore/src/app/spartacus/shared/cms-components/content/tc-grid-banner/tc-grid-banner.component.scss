@@ -1,0 +1,35 @@
+@use 'mixins';
+
+.tc-grid-banner-section-title {
+  text-align: center;
+  margin: 15px;
+}
+
+@include mixins.cx-media-breakpoint-up(md){
+
+  .tc-grid-banner-items-container {
+    display: grid;
+    grid-template-columns: repeat(1, 100%) ;
+    grid-auto-rows: 300px;
+    margin: 0;
+  }
+}
+
+@include mixins.cx-media-breakpoint-up(lg){
+  .tc-grid-banner-items-container {
+    grid-template-columns: repeat(2, 50%)   ;
+    margin: 0;
+
+  }
+}
+
+@include mixins.cx-media-breakpoint-up(xl) {
+  .tc-grid-banner-items-container {
+    grid-template-columns: repeat(3, 33.33%) ;
+    margin: 5%;
+
+  }
+}
+
+
+

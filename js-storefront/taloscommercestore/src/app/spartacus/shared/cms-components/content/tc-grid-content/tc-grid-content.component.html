@@ -1,0 +1,16 @@
+<ng-container *ngIf="componentData$ | async as data">
+  <a class="tc-grid-content-item__container" #asGridItemContainer [style.order]="data.position" href="#">
+    <div class="tc-grid-content-item--overlay">
+      <div class="tc-grid-content-item__title tc-grid-content-item--color">
+        <h2>{{data.title}}</h2>
+        <h4>{{data.description}}</h4>
+        <p>Position: {{data.position}} </p>
+      </div>
+      <svg class="tc-grid-content-item__polyline" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+        viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="9 18 15 12 9 6" />
+      </svg>
+    </div>
+  </a>
+</ng-container>
+

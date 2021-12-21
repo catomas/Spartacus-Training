@@ -1,0 +1,43 @@
+$contentCatalog = taloscommerceContentCatalog
+$contentCV = catalogVersion(CatalogVersion.catalog(Catalog.id[default=$contentCatalog]), CatalogVersion.version[default=Staged])[default=$contentCatalog:Staged]
+$lang = en
+
+
+INSERT_UPDATE PageTemplate; $contentCV[unique = true]; uid[unique = true]    ; name[$lang]
+                          ;                          ; exercise2PageTemplate ; Exercise 2 Page Template
+
+INSERT_UPDATE ContentPage; $contentCV[unique = true]; uid[unique = true]   ; name[$lang] ; title[$lang]
+                         ;                          ; exercise2ContentPage ; Exrcise 2 Content Page; Exercise 2 Carousel
+
+INSERT_UPDATE TrainingBannerCarousel; $contentCV[unique = true]; uid[unique = true]           ; name[$lang]
+                                    ;                          ; exercise2AfterlifeBlue       ; Exercise 2 After Life Blue
+                                    ;                          ; exercise2AfterlifeOrange     ; Exercise 2 After Life Orange
+                                    ;                          ; exercise2AfterlifeGreen      ; Exercise 2 After Life Green
+                                    ;                          ; exercise2AfterlifeYellow     ; Exercise 2 After Life Yellow
+                                    ;                          ; exercise2AfterlifeRed        ; Exercise 2 After Life Red
+                                    ;                          ; exercise2AfterlifeAquamarine ; Exercise 2 After Life Aquamarine
+
+INSERT_UPDATE TrainingBannerCarouselContainer; $contentCV[unique = true]; uid[unique = true]               ; name[$lang]
+                                             ;                          ; exercise2BannerCarouselContainer ; Exercise 2 Banner Carousel Container
+
+INSERT_UPDATE TrainingCardCarousel; $contentCV[unique = true]; uid[unique = true]           ; name[$lang]
+                                  ;                          ; exercise2KeyboardComponent   ; Exercise 2 Keyboard Component
+                                  ;                          ; exercise2NetflixComponent    ; Exercise 2 Netflix Component
+                                  ;                          ; exercise2SmartphoneComponent ; Exercise 2 Smartphone Component
+                                  ;                          ; exercise2DeskComponent       ; Exercise 2 Desk Component
+                                  ;                          ; exercise2TabletComponent     ; Exercise 2 Tablet Component
+                                  ;                          ; exercise2IdeasComponent      ; Exercise 2 Ideas Component
+
+
+INSERT_UPDATE TrainingCardCarouselContainer; $contentCV[unique = true]; uid[unique = true]              ; name[$lang]
+                                           ;                          ; exercise2CardCarouselContainer  ; Exercise 2 Card Carousel Container
+
+INSERT_UPDATE ContentSlot; $contentCV[unique = true]; uid[unique = true]          ; name[$lang]
+                         ;                          ; exercise2CardCarouselSlot   ; Exercise 2 Card Carousel Slot
+
+
+
+
+
+
+

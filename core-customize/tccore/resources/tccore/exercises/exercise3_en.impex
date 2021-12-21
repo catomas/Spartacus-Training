@@ -1,0 +1,25 @@
+$contentCatalog = taloscommerceContentCatalog
+$contentCV = catalogVersion(CatalogVersion.catalog(Catalog.id[default=$contentCatalog]), CatalogVersion.version[default=Staged])[default=$contentCatalog:Staged]
+$lang = en
+INSERT_UPDATE PageTemplate; $contentCV[unique = true]; uid[unique = true]    ; name[$lang]
+                          ;                          ; exercise3PageTemplate ; Exercise 3 page Template
+
+
+INSERT_UPDATE ContentPage; $contentCV[unique = true]; uid[unique = true]   ; name[$lang]; title[$lang]
+                         ;                          ; exercise3ContentPage ; Exercise 3 Content Page; Exercise 3 Form Email
+
+
+INSERT_UPDATE CMSFlexComponent; $contentCV[unique = true]; uid[unique = true] ; name[$lang]
+                              ;                          ; FormEmailComponent ; Form Email Component
+
+
+
+INSERT_UPDATE ContentSlot; $contentCV[unique = true]; uid[unique = true]; name[$lang]
+                         ;                          ; FormEmailSlot     ; Form Email Slot
+
+
+
+
+
+
+

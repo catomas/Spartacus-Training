@@ -1,0 +1,39 @@
+$contentCatalog = taloscommerceContentCatalog
+$contentCV = catalogVersion(CatalogVersion.catalog(Catalog.id[default=$contentCatalog]), CatalogVersion.version[default=Staged])[default=$contentCatalog:Staged]
+$picture = image(code, $contentCV)
+$lang = en
+
+
+INSERT_UPDATE PageTemplate; $contentCV[unique = true]; uid[unique = true]    ; name[$lang]
+                          ;                          ; exercise1PageTemplate ; Exercise 1 Page Template
+
+INSERT_UPDATE ContentPage; $contentCV[unique = true]; uid[unique = true]   ; name[$lang] ; title[$lang]
+                         ;                          ; exercise1ContentPage ; Exercise 1 Content Page; Exercise 1 Grid
+
+
+
+INSERT_UPDATE GridSimpleComponent; $contentCV[unique = true]; uid[unique = true]           ; name[$lang]
+                                 ;                          ; exercise1KeyboardComponent   ; Exercise 1 Keyboard Component
+                                 ;                          ; exercise1NetflixComponent    ; Exercise 1 Netflix Component
+                                 ;                          ; exercise1SmartphoneComponent ; Exercise 1 Smartphone Component
+                                 ;                          ; exercise1DeskComponent       ; Exercise 1 Desk Component
+                                 ;                          ; exercise1TabletComponent     ; Exercise 1 Tablet Component
+                                 ;                          ; exercise1IdeasComponent      ; Exercise 1 Ideas Component
+
+
+INSERT_UPDATE TrainingGridBannerComponent; $contentCV[unique = true]; uid[unique = true]           ;  name[$lang]                                                                                                                               ; columns;
+                                         ;                          ; exercise1GridBannerComponent ; Exercise 1 Grid Banner Component
+
+
+
+INSERT_UPDATE ContentSlot; $contentCV[unique = true]; uid[unique = true]; name[$lang]
+                         ;                          ; exercise1GridSlot ; Exercise 1 Grid Slot
+
+
+
+
+
+
+
+
+

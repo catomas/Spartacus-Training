@@ -1,0 +1,23 @@
+
+
+<div class="tc-carousel-container-page">
+  <ng-container *ngIf="bannerData$ | async as bannerData">
+    <div class="tc-carousel-container-page-itemsTitle">
+      <h1>{{bannerData.title}}</h1>
+      <p>{{bannerData.description}}</p>
+    </div>
+    <div class="tc-carousel-banner-container-indicators" >
+      <cx-carousel [items]="getItems() | async" [template]="template" itemWidth="100%" class="inline-navigation">
+      </cx-carousel>
+    </div>
+    <ng-template #template let-item="item">
+      <ng-container [cxComponentWrapper]="{
+        flexType: item.typeCode,
+        typeCode: item.typeCode,
+        uid: item?.uid
+      }">
+      </ng-container>
+    </ng-template>
+  </ng-container>
+</div>
+

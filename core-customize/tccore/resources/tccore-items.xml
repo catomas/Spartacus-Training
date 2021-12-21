@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+ Copyright (c) 2019 SAP SE or an SAP affiliate company. All rights reserved.
+-->
+<items xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="items.xsd">
+
+    <collectiontypes>
+    </collectiontypes>
+
+    <enumtypes>
+    </enumtypes>
+
+    <relations>
+        <relation code="Customer2ReferredCustomerRel" localized="false">
+            <sourceElement type="Customer" qualifier="customer" cardinality="one"/>
+            <!--suppress TSVBased -->
+            <targetElement type="ReferredCustomer" qualifier="referredCustomers" cardinality="many" collectiontype="list"/>
+        </relation>
+        <relation code="TrainingGridBannerComponent2GridSimpleComponent" localized="false">
+            <sourceElement type="TrainingGridBannerComponent" cardinality="one" qualifier="bannerContainer"/>
+            <targetElement type="GridSimpleComponent" cardinality="many" qualifier="gridComponent" ordered="true"/>
+        </relation>
+        <relation code="TrainingBannerCarouselContainer2TrainingBannerCarousel" localized="false">
+            <sourceElement type="TrainingBannerCarouselContainer" cardinality="one"
+                           qualifier="bannerCarouselContainer"/>
+            <targetElement type="TrainingBannerCarousel" cardinality="many" qualifier="bannerCarousel" ordered="true"/>
+        </relation>
+        <relation code="TrainingCardCarouselContainer2TrainingCardCarousel" localized="false">
+            <sourceElement type="TrainingCardCarouselContainer" cardinality="one" qualifier="cardCarouselContainer"/>
+            <targetElement type="TrainingCardCarousel" cardinality="many" qualifier="cardCarousel" ordered="true"/>
+        </relation>
+    </relations>
+
+    <itemtypes>
+        <typegroup name="CMS">
+            <itemtype code="TcSplitViewBannerComponent" extends="AbstractResponsiveBannerComponent"
+                      jaloclass="com.taloscommerce.core.jalo.TcSplitViewBannerComponent">
+                <attributes>
+                    <attribute qualifier="title" type="localized:java.lang.String">
+                        <persistence type="property"/>
+                    </attribute>
+                    <attribute qualifier="content" type="localized:java.lang.String">
+                        <persistence type="property"/>
+                    </attribute>
+                </attributes>
+            </itemtype>
+            <itemtype code="GridSimpleComponent" extends="SimpleBannerComponent"
+                      autocreate="true" generate="true"
+                      jaloclass="com.taloscommerce.core.jalo.GridSimpleComponent">
+                <description>Training SimpleBanner Component.
+                </description>
+                <attributes>
+                    <attribute qualifier="title" type="localized:java.lang.String">
+                        <description>Title of training simple grid component.</description>
+                        <modifiers/>
+                        <persistence type="property"/>
+                    </attribute>
+                    <attribute qualifier="description" type="localized:java.lang.String">
+                        <description>Description of training simple grid component.</description>
+                        <modifiers/>
+                        <persistence type="property"/>
+                    </attribute>
+                    <attribute qualifier="image" type="Media">
+                        <description>Image of training simple grid component.</description>
+                        <modifiers/>
+                        <persistence type="property"/>
+                    </attribute>
+                    <attribute qualifier="position" type="localized:java.lang.Integer">
+                        <description>Position of the Banner</description>
+                        <modifiers/>
+                        <persistence type="property"/>
+                    </attribute>
+                </attributes>
+            </itemtype>
+
+            <itemtype code="TrainingGridBannerComponent" extends="SimpleCMSComponent"
+                      autocreate="true" generate="true"
+                      jaloclass="com.taloscommerce.core.jalo.TrainingGridBannerComponent">
+                <description>Training GridBanner
+                </description>
+                <attributes>
+                    <attribute qualifier="columns" type="localized:java.lang.Integer">
+                        <description>Number of columns</description>
+                        <modifiers/>
+                        <persistence type="property"/>
+                    </attribute>
+                </attributes>
+            </itemtype>
+        </typegroup>
+
+
+        <typegroup name="Carousel">
+            <itemtype code="TrainingBannerCarouselContainer" extends="SimpleCMSComponent"
+                      autocreate="true" generate="true"
+                      jaloclass="com.taloscommerce.core.jalo.TrainingBannerCarouselContainer">
+                <description>Training Banner Carousel Container
+                </description>
+                <attributes>
+                    <attribute qualifier="title" type="localized:java.lang.String">
+                        <description>Title of Training Banner Carousel Container.</description>
+                        <modifiers/>
+                        <persistence type="property"/>
+                    </attribute>
+                    <attribute qualifier="description" type="localized:java.lang.String">
+                        <description>Description of Training Banner Carousel Container.</description>
+                        <modifiers/>
+                        <persistence type="property"/>
+                    </attribute>
+                </attributes>
+            </itemtype>
+            <itemtype code="TrainingBannerCarousel" extends="SimpleBannerComponent"
+                      autocreate="true" generate="true"
+                      jaloclass="com.taloscommerce.core.jalo.TrainingBannerCarousel">
+                <description>Training Banner Carousel
+                </description>
+                <attributes>
+                    <attribute qualifier="title" type="localized:java.lang.String">
+                        <description>Title of Training Banner Carousel.</description>
+                        <modifiers/>
+                        <persistence type="property"/>
+                    </attribute>
+                    <attribute qualifier="description" type="localized:java.lang.String">
+                        <description>Description of Training Banner Carousel.</description>
+                        <modifiers/>
+                        <persistence type="property"/>
+                    </attribute>
+                </attributes>
+            </itemtype>
+            <itemtype code="TrainingCardCarouselContainer" extends="SimpleCMSComponent"
+                      autocreate="true" generate="true"
+                      jaloclass="com.taloscommerce.core.jalo.TrainingCardCarouselContainer">
+                <description>Training Card Carousel Container
+                </description>
+                <attributes>
+                    <attribute qualifier="title" type="localized:java.lang.String">
+                        <description>Title of Training Card Carousel Container.</description>
+                        <modifiers/>
+                        <persistence type="property"/>
+                    </attribute>
+                    <attribute qualifier="description" type="localized:java.lang.String">
+                        <description>Description of Training Card Carousel Container.</description>
+                        <modifiers/>
+                        <persistence type="property"/>
+                    </attribute>
+                </attributes>
+            </itemtype>
+            <itemtype code="TrainingCardCarousel" extends="SimpleBannerComponent"
+                      autocreate="true" generate="true"
+                      jaloclass="com.taloscommerce.core.jalo.TrainingCardCarousel">
+                <description>Training Card Carousel
+                </description>
+                <attributes>
+                    <attribute qualifier="title" type="localized:java.lang.String">
+                        <description>Title of Training Card Carousel.</description>
+                        <modifiers/>
+                        <persistence type="property"/>
+                    </attribute>
+                    <attribute qualifier="description" type="localized:java.lang.String">
+                        <description>Description of Training Card Carousel.</description>
+                        <modifiers/>
+                        <persistence type="property"/>
+                    </attribute>
+                </attributes>
+            </itemtype>
+        </typegroup>
+
+
+        <typegroup name="Training Email">
+            <itemtype code="TrainingFormEmailProcess" extends="StoreFrontCustomerProcess"
+                      autocreate="true" generate="true"
+                      jaloclass="com.taloscommerce.core.jalo.TrainingFormEmailProcess">
+                <description>Training Form Email
+                </description>
+                <attributes>
+                    <attribute qualifier="mailTo" type="localized:java.lang.String">
+                        <description>Email Receptor</description>
+                        <modifiers/>
+                        <persistence type="property"/>
+                    </attribute>
+                    <attribute qualifier="mailSubject" type="localized:java.lang.String">
+                        <description>Email Subject</description>
+                        <modifiers/>
+                        <persistence type="property"/>
+                    </attribute>
+                    <attribute qualifier="message" type="localized:java.lang.String">
+                        <description>Email Message</description>
+                        <modifiers/>
+                        <persistence type="property"/>
+                    </attribute>
+                </attributes>
+            </itemtype>
+        </typegroup>
+
+        <typegroup name="Training Core Items">
+            <itemtype code="DocumentType">
+                <deployment table="DocumentTypes" typecode="12000"/>
+                <attributes>
+                    <attribute qualifier="code" type="java.lang.String">
+                        <modifiers unique="true" initial="true" optional="false"/>
+                        <persistence type="property"/>
+                    </attribute>
+                    <attribute qualifier="name" type="localized:java.lang.String">
+                        <persistence type="property"/>
+                    </attribute>
+                </attributes>
+                <indexes>
+                    <index name="codeIdx" unique="true">
+                        <key attribute="code"/>
+                    </index>
+                </indexes>
+            </itemtype>
+
+            <itemtype code="ReferredCustomer">
+                <deployment table="ReferredCustomers" typecode="12001"/>
+                <attributes>
+                    <attribute qualifier="email" type="java.lang.String">
+                        <modifiers unique="true" initial="true" optional="false"/>
+                        <persistence type="property"/>
+                    </attribute>
+                    <attribute qualifier="documentType" type="DocumentType">
+                        <modifiers initial="true" optional="false"/>
+                        <persistence type="property"/>
+                    </attribute>
+                    <attribute qualifier="documentNumber" type="java.lang.String">
+                        <modifiers initial="true" optional="false"/>
+                        <persistence type="property"/>
+                    </attribute>
+                    <attribute qualifier="firstName" type="java.lang.String">
+                        <modifiers initial="true" optional="false"/>
+                        <persistence type="property"/>
+                    </attribute>
+                    <attribute qualifier="lastName" type="java.lang.String">
+                        <modifiers initial="true" optional="false"/>
+                        <persistence type="property"/>
+                    </attribute>
+                </attributes>
+                <indexes>
+                    <index name="emailIdx" unique="true">
+                        <key attribute="email"/>
+                    </index>
+                </indexes>
+            </itemtype>
+        </typegroup>
+
+        <typegroup name="Electronics">
+            <itemtype code="ElectronicsColorVariantProduct" extends="VariantProduct"
+                      jaloclass="com.taloscommerce.core.jalo.ElectronicsColorVariantProduct">
+                <attributes>
+                    <attribute qualifier="color" type="localized:java.lang.String" metatype="VariantAttributeDescriptor">
+                        <description>Color of the product.</description>
+                        <persistence type="property"/>
+                    </attribute>
+                </attributes>
+            </itemtype>
+        </typegroup>
+
+    </itemtypes>
+</items>

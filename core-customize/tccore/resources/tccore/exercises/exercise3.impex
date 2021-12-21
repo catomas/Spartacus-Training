@@ -1,0 +1,60 @@
+$contentCatalog = taloscommerceContentCatalog
+$contentCV = catalogVersion(CatalogVersion.catalog(Catalog.id[default=$contentCatalog]), CatalogVersion.version[default=Staged])[default=$contentCatalog:Staged]
+
+
+INSERT_UPDATE PageTemplate; $contentCV[unique = true]; uid[unique = true]    ; frontendTemplateName    ; restrictedPageTypes(code); active[default = true]
+                          ;                          ; exercise3PageTemplate ; exercises/exercise3Page ; ContentPage
+
+INSERT_UPDATE ContentPage; $contentCV[unique = true]; uid[unique = true]   ; masterTemplate(uid, $contentCV); label; defaultPage[default = 'true']; approvalStatus(code)[default = 'approved']; homepage[default = 'false']
+                         ;                          ; exercise3ContentPage ; exercise3PageTemplate          ; exercise3
+
+INSERT_UPDATE ContentSlotName; name[unique = true]    ; template(uid, $contentCV)[unique = true][default = 'exercise3PageTemplate']; validComponentTypes(code); compTypeGroup(code)
+                             ; SiteLogo               ;                                                                            ;                          ; logo
+                             ; SiteContext            ;                                                                            ; CMSSiteContextComponent  ;
+                             ; SiteLinks              ;                                                                            ; CMSLinkComponent         ;
+                             ; HeaderLinks            ;                                                                            ;                          ; headerlinks
+                             ; SearchBox              ;                                                                            ;                          ; searchbox
+                             ; MiniCart               ;                                                                            ;                          ; minicart
+                             ; NavigationBar          ;                                                                            ;                          ; navigation
+                             ; TopContent             ;                                                                            ;                          ; wide
+                             ; SideContent            ;                                                                            ;                          ; narrow
+                             ; BodyContent            ;                                                                            ;                          ; wide
+                             ; BottomContent          ;                                                                            ;                          ; wide
+                             ; Footer                 ;                                                                            ;                          ; footer
+                             ; TopHeaderSlot          ;                                                                            ;                          ; wide
+                             ; BottomHeaderSlot       ;                                                                            ;                          ; wide
+                             ; PlaceholderContentSlot ;                                                                            ;                          ;
+
+INSERT_UPDATE CMSFlexComponent; $contentCV[unique = true]; uid[unique = true] ; name                 ; flexType           ; &componentRef
+                              ;                          ; FormEmailComponent ; Form Email Component ; FormEmailComponent ; FormEmailComponent
+
+
+
+INSERT_UPDATE ContentSlot; $contentCV[unique = true]; uid[unique = true]; active; cmsComponents(uid, $contentCV)
+                         ;                          ; FormEmailSlot     ; true  ; FormEmailComponent
+
+
+INSERT_UPDATE ContentSlotForTemplate; $contentCV[unique = true]; uid[unique = true]                   ; position[unique = true]; pageTemplate(uid, $contentCV)[unique = true][default = 'exercise3PageTemplate']; contentSlot(uid, $contentCV)[unique = true]; allowOverwrite
+                                    ;                          ; SiteLogo-Exercise3Page               ; SiteLogo               ;                                                                                ; SiteLogoSlot                               ; true
+                                    ;                          ; SiteContextSlot-Exercise3Page        ; SiteContext            ;                                                                                ; SiteContextSlot                            ; true
+                                    ;                          ; SiteLinksSlot-Exercise3Page          ; SiteLinks              ;                                                                                ; SiteLinksSlot                              ; true
+                                    ;                          ; HomepageLink-Exercise3Page           ; HomepageNavLink        ;                                                                                ; HomepageNavLinkSlot                        ; true
+                                    ;                          ; NavigationBar-Exercise3Page          ; NavigationBar          ;                                                                                ; NavigationBarSlot                          ; true
+                                    ;                          ; MiniCart-Exercise3Page               ; MiniCart               ;                                                                                ; MiniCartSlot                               ; true
+                                    ;                          ; Footer-Exercise3Page                 ; Footer                 ;                                                                                ; FooterSlot                                 ; true
+                                    ;                          ; HeaderLinks-Exercise3Page            ; HeaderLinks            ;                                                                                ; HeaderLinksSlot                            ; true
+                                    ;                          ; SearchBox-Exercise3Page              ; SearchBox              ;                                                                                ; SearchBoxSlot                              ; true
+                                    ;                          ; TopHeaderSlot-Exercise3Page          ; TopHeaderSlot          ;                                                                                ; TopHeaderSlot                              ; true
+                                    ;                          ; BottomHeaderSlot-Exercise3Page       ; BottomHeaderSlot       ;                                                                                ; BottomHeaderSlot                           ; true
+                                    ;                          ; PlaceholderContentSlot-Exercise3Page ; PlaceholderContentSlot ;                                                                                ; PlaceholderContentSlot                     ; true
+                                    ;                          ; FormEmailSlot-Exercise3Page          ; FormEmailSlot          ;                                                                                ; FormEmailSlot                              ; true
+
+
+
+
+
+
+
+
+
+

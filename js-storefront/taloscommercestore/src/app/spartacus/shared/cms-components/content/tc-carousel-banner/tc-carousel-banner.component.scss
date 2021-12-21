@@ -1,0 +1,16 @@
+.tc-carosuel-banner-itemBanner {
+  height: 450px;
+  color: white;
+  background-size: cover;
+  background-position: center;
+
+  .tc-carosuel-banner-itemBanner__title {
+    background: rgba(255, 255, 255, 0.2);
+    position: relative;
+    top: 170px;
+    text-align: center;
+    width: 300px;
+    padding: 10px;
+
+  }
+}

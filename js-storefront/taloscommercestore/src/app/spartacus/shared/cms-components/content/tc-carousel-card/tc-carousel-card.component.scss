@@ -1,0 +1,28 @@
+
+
+.tc-carosuel-card-itemCard {
+
+  background-size: cover;
+  background-position: center;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  margin: 4px;
+
+
+  .tc-carosuel-card-itemCard__image {
+    height: 150px;
+    border-radius: 5px 5px 0 0;
+  }
+
+  .tc-carosuel-card-itemCard__title {
+    height: 80px;
+    padding: 2px 16px;
+    line-height: 30%;
+
+    p {
+      font-size: 14px;
+    }
+
+
+  }
+}
